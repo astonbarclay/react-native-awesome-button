@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
 import { Animated, View } from 'react-native';
 
 import ButtonView from './ButtonView';
