@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Animated, View } from 'react-native';
 
 import ButtonView from './ButtonView';
-
+import PropTypes from 'prop-types'
 
 class AwesomeButton extends Component {
   static propTypes = {
