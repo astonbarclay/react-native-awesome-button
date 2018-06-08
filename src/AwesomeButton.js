@@ -20,11 +20,11 @@ class AwesomeButton extends Component {
     };
   }
 
-  static getDerivedStateFromProps(newProps) {
+  static getDerivedStateFromProps(newProps, state) {
     if (newProps.buttonState) {
       return ({
         viewState: newProps.states[newProps.buttonState],
-        prevBackgroundColor: this.state.viewState.backgroundStyle.backgroundColor
+        prevBackgroundColor: state.viewState.backgroundStyle.backgroundColor
       });
     }
     return null;
