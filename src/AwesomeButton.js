@@ -1,15 +1,15 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { Animated, View } from 'react-native';
 
+import PropTypes from 'prop-types';
 import ButtonView from './ButtonView';
-import PropTypes from 'prop-types'
 
 class AwesomeButton extends Component {
   static propTypes = {
     states: PropTypes.object.isRequired,
     buttonState: PropTypes.string,
     transitionDuration: PropTypes.number
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -20,13 +20,14 @@ class AwesomeButton extends Component {
     };
   }
 
-  componentWillReceiveProps(newProps) {
+  static getDerivedStateFromProps(newProps) {
     if (newProps.buttonState) {
-      this.setState({
+      return ({
         viewState: newProps.states[newProps.buttonState],
         prevBackgroundColor: this.state.viewState.backgroundStyle.backgroundColor
       });
     }
+    return null;
   }
 
   componentDidUpdate() {
@@ -35,7 +36,8 @@ class AwesomeButton extends Component {
   }
 
   startAnimation() {
-    Animated.timing(this.state.backgroundColor,
+    Animated.timing(
+      this.state.backgroundColor,
       {
         toValue: 1.0,
         duration: this.props.transitionDuration
@@ -67,7 +69,7 @@ class AwesomeButton extends Component {
           text={text}
           spinner={spinner}
           onPress={onPress}
-          disabled={onPress ? false : true}
+          disabled={!onPress}
           icon={icon}
           iconAlignment={iconAlignment}
         />
