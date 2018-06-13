@@ -10,6 +10,7 @@ const ButtonView = (props) => {
     });
     return (
         <TouchableOpacity
+            style={{ width: '100%' }}
             onPress={props.onPress}
             activeOpacity={0.9}
             disabled={props.disabled}
