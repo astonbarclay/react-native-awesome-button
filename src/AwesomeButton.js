@@ -53,7 +53,8 @@ class AwesomeButton extends Component {
             spinner,
             onPress,
             icon,
-            iconAlignment
+            iconAlignment,
+            spinnerProps
         } = this.state.viewState;
         const backgroundColor = this.state.backgroundColor.interpolate({
             inputRange: [0, 1],
@@ -67,6 +68,7 @@ class AwesomeButton extends Component {
                 labelStyle={labelStyle}
                 text={text}
                 spinner={spinner}
+                spinnerProps={spinnerProps}
                 onPress={onPress}
                 disabled={!onPress}
                 icon={icon}
