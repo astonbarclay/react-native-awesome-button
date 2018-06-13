@@ -5,82 +5,82 @@ import PropTypes from 'prop-types';
 import ButtonView from './ButtonView';
 
 class AwesomeButton extends Component {
-  static propTypes = {
-    states: PropTypes.object.isRequired,
-    buttonState: PropTypes.string,
-    transitionDuration: PropTypes.number
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewState: this.props.states[this.props.buttonState] ||
-        this.props.states[Object.keys(this.props.states)[0]],
-      backgroundColor: new Animated.Value(0.0)
+    static propTypes = {
+        states: PropTypes.object.isRequired,
+        buttonState: PropTypes.string,
+        transitionDuration: PropTypes.number
     };
-  }
 
-  static getDerivedStateFromProps(newProps, state) {
-    if (newProps.buttonState) {
-      return ({
-        viewState: newProps.states[newProps.buttonState],
-        prevBackgroundColor: state.viewState.backgroundStyle.backgroundColor
-      });
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewState: this.props.states[this.props.buttonState] ||
+            this.props.states[Object.keys(this.props.states)[0]],
+            backgroundColor: new Animated.Value(0.0)
+        };
     }
-    return null;
-  }
 
-  componentDidUpdate() {
-    this.state.backgroundColor.setValue(0);
-    this.startAnimation();
-  }
+    static getDerivedStateFromProps(newProps, state) {
+        if (newProps.buttonState) {
+            return ({
+                viewState: newProps.states[newProps.buttonState],
+                prevBackgroundColor: state.viewState.backgroundStyle.backgroundColor
+            });
+        }
+        return null;
+    }
 
-  startAnimation() {
-    Animated.timing(
-      this.state.backgroundColor,
-      {
-        toValue: 1.0,
-        duration: this.props.transitionDuration
-      }
-    ).start();
-  }
+    componentDidUpdate() {
+        this.state.backgroundColor.setValue(0);
+        this.startAnimation();
+    }
 
-  render() {
-    const {
-      backgroundStyle,
-      labelStyle,
-      text,
-      spinner,
-      onPress,
-      icon,
-      iconAlignment
-    } = this.state.viewState;
-    const backgroundColor = this.state.backgroundColor.interpolate({
-      inputRange: [0, 1],
-      outputRange: this.state.prevBackgroundColor ?
-        [this.state.prevBackgroundColor, backgroundStyle.backgroundColor]
-        : [backgroundStyle.backgroundColor, backgroundStyle.backgroundColor]
-    });
-    return (
-      <View>
-        <ButtonView
-          backgroundStyle={[backgroundStyle, { backgroundColor }]}
-          labelStyle={labelStyle}
-          text={text}
-          spinner={spinner}
-          onPress={onPress}
-          disabled={!onPress}
-          icon={icon}
-          iconAlignment={iconAlignment}
-        />
-      </View>
-    );
-  }
+    startAnimation() {
+        Animated.timing(
+            this.state.backgroundColor,
+            {
+                toValue: 1.0,
+                duration: this.props.transitionDuration
+            }
+        ).start();
+    }
+
+    render() {
+        const {
+            backgroundStyle,
+            labelStyle,
+            text,
+            spinner,
+            onPress,
+            icon,
+            iconAlignment
+        } = this.state.viewState;
+        const backgroundColor = this.state.backgroundColor.interpolate({
+            inputRange: [0, 1],
+            outputRange: this.state.prevBackgroundColor ?
+                [this.state.prevBackgroundColor, backgroundStyle.backgroundColor]
+                : [backgroundStyle.backgroundColor, backgroundStyle.backgroundColor]
+        });
+        return (
+            <View>
+                <ButtonView
+                    backgroundStyle={[backgroundStyle, { backgroundColor }]}
+                    labelStyle={labelStyle}
+                    text={text}
+                    spinner={spinner}
+                    onPress={onPress}
+                    disabled={!onPress}
+                    icon={icon}
+                    iconAlignment={iconAlignment}
+                />
+            </View>
+        );
+    }
 }
 
 AwesomeButton.defaultProps = {
-  buttonState: 'default',
-  transitionDuration: 200
+    buttonState: 'default',
+    transitionDuration: 200
 };
 
 export default AwesomeButton;

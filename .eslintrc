@@ -10,6 +10,10 @@
   },
   "rules": {
     "comma-dangle": 0,
+    "indent": ["error", 4],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/forbid-prop-types": 0,
     "spaced-comment": 0,
     "new-cap": [2, { "capIsNewExceptions": ["Map"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
