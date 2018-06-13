@@ -62,18 +62,16 @@ class AwesomeButton extends Component {
                 : [backgroundStyle.backgroundColor, backgroundStyle.backgroundColor]
         });
         return (
-            <View>
-                <ButtonView
-                    backgroundStyle={[backgroundStyle, { backgroundColor }]}
-                    labelStyle={labelStyle}
-                    text={text}
-                    spinner={spinner}
-                    onPress={onPress}
-                    disabled={!onPress}
-                    icon={icon}
-                    iconAlignment={iconAlignment}
-                />
-            </View>
+            <ButtonView
+                backgroundStyle={[backgroundStyle, { backgroundColor }]}
+                labelStyle={labelStyle}
+                text={text}
+                spinner={spinner}
+                onPress={onPress}
+                disabled={!onPress}
+                icon={icon}
+                iconAlignment={iconAlignment}
+            />
         );
     }
 }
