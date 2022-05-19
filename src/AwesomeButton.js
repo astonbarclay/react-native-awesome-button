@@ -41,7 +41,7 @@ class AwesomeButton extends Component {
             {
                 toValue: 1.0,
                 duration: this.props.transitionDuration,
-                useNativeDriver: true
+                useNativeDriver: false
             }
         ).start();
     }
