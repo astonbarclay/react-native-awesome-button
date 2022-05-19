@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated } from 'react-native';
 
 import PropTypes from 'prop-types';
 import ButtonView from './ButtonView';
@@ -40,7 +40,8 @@ class AwesomeButton extends Component {
             this.state.backgroundColor,
             {
                 toValue: 1.0,
-                duration: this.props.transitionDuration
+                duration: this.props.transitionDuration,
+                useNativeDriver: true
             }
         ).start();
     }
